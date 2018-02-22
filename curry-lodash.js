@@ -22,3 +22,24 @@ const curried3 = _.curry( addFn3 );
 console.log( `${ addHard1(2)(3) } versus ${ curried1(2)(3) }` ); // 5 versus 5
 console.log( `${ addHard2(2)(3)(1) } versus ${ curried2(2)(3)(1) }` ); // 6 versus 6
 console.log( `${ addHard3(2)(3)(1)(10) } versus ${ curried3(2)(3)(1)(10) }` ); // 16 versus 16
+
+
+const runPerfWith = ( composeFunction, testName ) => {
+    // Start timing now
+    console.time( testName );
+    for ( let i = 1; i <= 1e6; i++ ) {
+        composeFunction(2)(3)(1)(10);
+    }
+    // ... and stop.
+    console.timeEnd( testName );
+};
+
+runPerfWith( addHard3, 'CurryHard' );
+runPerfWith( curried3, 'CurryLodash' );
+
+/**
+ *
+ * CurryHard: 986.148ms
+ * CurryLodash: 4754.745ms
+ *
+ */
