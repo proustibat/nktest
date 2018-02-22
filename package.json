@@ -10,5 +10,8 @@
   "scripts": {
     "test:medium": "mocha __tests__/**/medium.test.js",
     "test:hard": "mocha __tests__/**/hard.test.js"
+  },
+  "dependencies": {
+    "lodash": "^4.17.5"
   }
 }
