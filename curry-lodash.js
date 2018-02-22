@@ -24,11 +24,11 @@ console.log( `${ addHard2(2)(3)(1) } versus ${ curried2(2)(3)(1) }` ); // 6 vers
 console.log( `${ addHard3(2)(3)(1)(10) } versus ${ curried3(2)(3)(1)(10) }` ); // 16 versus 16
 
 
-const runPerfWith = ( composeFunction, testName ) => {
+const runPerfWith = ( curriedFunction, testName ) => {
     // Start timing now
     console.time( testName );
     for ( let i = 1; i <= 1e6; i++ ) {
-        composeFunction(2)(3)(1)(10);
+        curriedFunction(2)(3)(1)(10);
     }
     // ... and stop.
     console.timeEnd( testName );
