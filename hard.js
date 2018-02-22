@@ -19,13 +19,9 @@
 
 
 // es6 version
-const hard = (
-    f, arr = [],
-    length = f.length
-) => (...args) => (
-    a => a.length === length ?
-        f(...a) :
-        hard(f, a)
-)([...arr, ...args]);
+const hard = ( f, arr = [], length = f.length ) =>
+    ( ...args ) => (
+        a => a.length === length ? f( ...a ) : hard( f, a ) )( [ ...arr, ...args ]
+    );
 
 module.exports = hard;
